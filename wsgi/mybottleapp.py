@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 from bottle import get, post, route, request, run, template, static_file, response, default_app
-from shift_local import shift_local
 from ANResult import AdNailResultado
 
 fil = open('Key.conf','r')
