@@ -5,13 +5,7 @@ from bottle import get, post, route, request, run, template, static_file, respon
 from shift_local import shift_local
 from ANResult import AdNailResultado
 
-fil = open('Key.conf','r')
-key = ''
-for lin in fil:
-    key = key + lin
-key = key.replace("\n","")
-fil.close()
-exec key
+appid = 'micasaa3b-ad29-4b11-ac66-115e152e910'
 
 @get('/css/<filename:re:.*>')
 def sever_static(filename):
