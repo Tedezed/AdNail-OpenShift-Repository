@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import commands
+import requests
 import os
 from os import path
 from bottle import *
