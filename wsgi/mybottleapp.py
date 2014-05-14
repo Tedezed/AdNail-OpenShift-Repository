@@ -14,7 +14,7 @@ def static(path):
 
 @route('/')
 def index():
-    return template('/static/views/index.html')
+    return template('index.html')
 
 @get('/busqueda')
 def entrada():
@@ -67,6 +67,8 @@ if os.environ.has_key('OPENSHIFT_REPO_DIR'):
 
 if ON_OPENSHIFT:
     TEMPLATE_PATH.append(os.path.join(os.environ['OPENSHIFT_HOMEDIR'],'runtime/repo/wsgi/views/'))
+    views_path = os.environ['APPDIR'] + '/repo/wsgi/views'
+    TEMPLATE_PATH.insert(0,views_path)
 
     application=default_app()
 else:
