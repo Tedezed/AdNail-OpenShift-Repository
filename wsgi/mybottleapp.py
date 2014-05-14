@@ -5,7 +5,7 @@ import commands
 import os
 from os import path
 from bottle import *
-from ANResult import AdNailResultado
+from ANResult import *
 
 appid = 'micasaa3b-ad29-4b11-ac66-115e152e910'
 
@@ -58,8 +58,7 @@ def resultado():
     entrada = ''
     numpag = 1
     response.set_cookie('busqueda', str(numpag))
-    resultadnail = AdNailResultado(appid,numpag,entrada)
-    return resultadnail
+    return AdNailResultado(appid,numpag,entrada)
 
 @route('/resultado+')
 def resultado():

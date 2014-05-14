@@ -1,8 +1,7 @@
 def AdNailResultado(appid,numpag,entrada):
 	from bottle import template
-	from ebay import busqueda
-	from BrainSlug import BrainSlugMA
-	from BrainSlug import BrainSlugTA
+	from ebay import *
+	from BrainSlug import *
 	try:
 		dicebay = busqueda(appid,numpag,entrada)
 	except KeyError:
