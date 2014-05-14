@@ -9,25 +9,44 @@ from ANResult import AdNailResultado
 
 appid = 'micasaa3b-ad29-4b11-ac66-115e152e910'
 
+ON_OPENSHIFT = False
+if os.environ.has_key('OPENSHIFT_REPO_DIR'):
+    ON_OPENSHIFT = True
+
 @get('/<filename:re:.*\.js>')
 def javascripts(filename):
-    return static_file(filename, root=os.environ['OPENSHIFT_REPO_DIR']+'/wsgi/static/js')
+    if ON_OPENSHIFT:
+        return static_file(filename, root=os.environ['OPENSHIFT_REPO_DIR']+'/wsgi/static/js')
+    else:
+        return static_file(filename, root='js')
 
 @get('/css/<filename:re:.*>')
 def sever_static(filename):
-    return static_file(filename, root=os.environ['OPENSHIFT_REPO_DIR']+'/wsgi/static/css')
+    if ON_OPENSHIFT:
+        return static_file(filename, root=os.environ['OPENSHIFT_REPO_DIR']+'/wsgi/static/css')
+    else:
+        return static_file(filename, root='css')
 
 @get('/img/<filename:re:.*>')
 def sever_static(filename):
-    return static_file(filename, root=os.environ['OPENSHIFT_REPO_DIR']+'/wsgi/static/img')
+    if ON_OPENSHIFT:
+        return static_file(filename, root=os.environ['OPENSHIFT_REPO_DIR']+'/wsgi/static/img')
+    else:
+        return static_file(filename, root='img')
 
 @get('/js/<filename:re:.*>')
 def sever_static(filename):
-    return static_file(filename, root=os.environ['OPENSHIFT_REPO_DIR']+'/wsgi/static/js')
+    if ON_OPENSHIFT:
+        return static_file(filename, root=os.environ['OPENSHIFT_REPO_DIR']+'/wsgi/static/js')
+    else:
+        return static_file(filename, root='js')
 
 @get('/font/<filename:re:.*>')
 def sever_static(filename):
-    return static_file(filename, root=os.environ['OPENSHIFT_REPO_DIR']+'/wsgi/static/font')
+    if ON_OPENSHIFT:
+        return static_file(filename, root=os.environ['OPENSHIFT_REPO_DIR']+'/wsgi/static/font')
+    else:
+        return static_file(filename, root='font')
 
 @route('/')
 def index():
@@ -76,11 +95,6 @@ def resultado():
         return AdNailResultado(appid,numpag,entrada)
     except:
         return template('busqueda_error.html')
-
-#Deteccion de entorno, OpenShift o local.
-ON_OPENSHIFT = False
-if os.environ.has_key('OPENSHIFT_REPO_DIR'):
-    ON_OPENSHIFT = True
 
 if ON_OPENSHIFT:
     TEMPLATE_PATH.append(os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi/views/'))
