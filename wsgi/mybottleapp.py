@@ -3,8 +3,7 @@
 
 import commands
 import os
-from bottle import get, post, route, request, run, template, static_file,
- response, TEMPLATE_PATH, default_app, get_url
+from bottle import get, post, route, request, run, template, static_file, response, TEMPLATE_PATH, default_app
 from ANResult import AdNailResultado
 
 appid = 'micasaa3b-ad29-4b11-ac66-115e152e910'
@@ -13,10 +12,13 @@ appid = 'micasaa3b-ad29-4b11-ac66-115e152e910'
 def static(path):
     return static_file(path, root='static')
 
+@route('/views/:path#.+#', name='views')
+def static(path):
+    return static_file(path, root='views')
+
 @route('/')
-@view('index.html')
 def index():
-    return { 'get_url': get_url }
+    return template('index.html')
 
 @get('/busqueda')
 def entrada():
@@ -69,8 +71,6 @@ if os.environ.has_key('OPENSHIFT_REPO_DIR'):
 
 if ON_OPENSHIFT:
     TEMPLATE_PATH.append(os.path.join(os.environ['OPENSHIFT_HOMEDIR'],'runtime/repo/wsgi/views/'))
-    views_path = os.environ['APPDIR'] + '/repo/wsgi/views'
-    TEMPLATE_PATH.insert(0,views_path)
 
     application=default_app()
 else:
