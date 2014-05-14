@@ -3,19 +3,34 @@
 
 import commands
 import os
-from bottle import get, post, route, request, run, template, static_file, response, TEMPLATE_PATH, default_app, view, get_url
+from bottle import get, post, route, request, run, template, static_file, response, TEMPLATE_PATH, default_app
 from ANResult import AdNailResultado
 
 appid = 'micasaa3b-ad29-4b11-ac66-115e152e910'
 
-@route('/static/:path#.+#', name='static')
-def static(path):
-    return static_file(path, root='static')
+@get('/<filename:re:.*\.js>')
+def javascripts(filename):
+    return static_file(filename, root=os.environ['OPENSHIFT_REPO_DIR']+'/wsgi/static/js')
+
+@get('/css/<filename:re:.*>')
+def sever_static(filename):
+    return static_file(filename, root=os.environ['OPENSHIFT_REPO_DIR']+'/wsgi/static/css')
+
+@get('/img/<filename:re:.*>')
+def sever_static(filename):
+    return static_file(filename, root=os.environ['OPENSHIFT_REPO_DIR']+'/wsgi/static/img')
+
+@get('/js/<filename:re:.*>')
+def sever_static(filename):
+    return static_file(filename, root=os.environ['OPENSHIFT_REPO_DIR']+'/wsgi/static/js')
+
+@get('/font/<filename:re:.*>')
+def sever_static(filename):
+    return static_file(filename, root=os.environ['OPENSHIFT_REPO_DIR']+'/wsgi/static/font')
 
 @route('/')
-@view('index')
 def index():
-    return { 'get_url': get_url } 
+    return template('index.html')
 
 @get('/busqueda')
 def entrada():
@@ -67,8 +82,7 @@ if os.environ.has_key('OPENSHIFT_REPO_DIR'):
     ON_OPENSHIFT = True
 
 if ON_OPENSHIFT:
-    TEMPLATE_PATH.append(os.path.join(os.environ['OPENSHIFT_HOMEDIR'],'runtime/repo/wsgi/views/'))
-
+    TEMPLATE_PATH.append(os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi/views/'))
     application=default_app()
 else:
     print "AdNail - Interfaces disponibles: "
