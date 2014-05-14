@@ -3,7 +3,8 @@
 
 import commands
 import os
-from bottle import get, post, route, request, run, template, static_file, response, TEMPLATE_PATH, default_app
+from bottle import get, post, route, request, run, template, static_file,
+ response, TEMPLATE_PATH, default_app, get_url
 from ANResult import AdNailResultado
 
 appid = 'micasaa3b-ad29-4b11-ac66-115e152e910'
@@ -13,8 +14,9 @@ def static(path):
     return static_file(path, root='static')
 
 @route('/')
+@view('index.html')
 def index():
-    return template('index.html')
+    return { 'get_url': get_url }
 
 @get('/busqueda')
 def entrada():
