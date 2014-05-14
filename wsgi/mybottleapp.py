@@ -58,7 +58,8 @@ def resultado():
     entrada = ''
     numpag = 1
     response.set_cookie('busqueda', str(numpag))
-    return AdNailResultado(appid,numpag,entrada)
+    resultadnail = AdNailResultado(appid,numpag,entrada)
+    return resultadnail
 
 @route('/resultado+')
 def resultado():
