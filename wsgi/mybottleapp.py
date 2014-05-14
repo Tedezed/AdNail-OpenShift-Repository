@@ -58,7 +58,10 @@ def resultado():
     entrada = ''
     numpag = 1
     response.set_cookie('busqueda', str(numpag))
-    return AdNailResultado(appid,numpag,entrada)
+    try:
+        return AdNailResultado(appid,numpag,entrada)
+    except:
+        return template('busqueda_error.html')
 
 @route('/resultado+')
 def resultado():
@@ -67,7 +70,6 @@ def resultado():
     if numpag < 35:
         numpag = numpag + 1
     response.set_cookie('busqueda', str(numpag))
-
     try:
         return AdNailResultado(appid,numpag,entrada)
     except:
