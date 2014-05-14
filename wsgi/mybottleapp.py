@@ -13,40 +13,33 @@ ON_OPENSHIFT = False
 if os.environ.has_key('OPENSHIFT_REPO_DIR'):
     ON_OPENSHIFT = True
 
-@get('/<filename:re:.*\.js>')
-def javascripts(filename):
-    if ON_OPENSHIFT:
-        return static_file(filename, root=os.environ['OPENSHIFT_REPO_DIR']+'/wsgi/static/js')
-    else:
-        return static_file(filename, root='js')
-
 @get('/css/<filename:re:.*>')
 def sever_static(filename):
     if ON_OPENSHIFT:
         return static_file(filename, root=os.environ['OPENSHIFT_REPO_DIR']+'/wsgi/static/css')
     else:
-        return static_file(filename, root='css')
+        return static_file(filename, root='static/css')
 
 @get('/img/<filename:re:.*>')
 def sever_static(filename):
     if ON_OPENSHIFT:
         return static_file(filename, root=os.environ['OPENSHIFT_REPO_DIR']+'/wsgi/static/img')
     else:
-        return static_file(filename, root='img')
+        return static_file(filename, root='static/img')
 
 @get('/js/<filename:re:.*>')
 def sever_static(filename):
     if ON_OPENSHIFT:
         return static_file(filename, root=os.environ['OPENSHIFT_REPO_DIR']+'/wsgi/static/js')
     else:
-        return static_file(filename, root='js')
+        return static_file(filename, root='static/js')
 
 @get('/font/<filename:re:.*>')
 def sever_static(filename):
     if ON_OPENSHIFT:
         return static_file(filename, root=os.environ['OPENSHIFT_REPO_DIR']+'/wsgi/static/font')
     else:
-        return static_file(filename, root='font')
+        return static_file(filename, root='static/font')
 
 @route('/')
 def index():
