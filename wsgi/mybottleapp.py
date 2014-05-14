@@ -12,6 +12,10 @@ appid = 'micasaa3b-ad29-4b11-ac66-115e152e910'
 def static(path):
     return static_file(path, root='static')
 
+@route('/css/:path#.+#', name='css')
+def static(path):
+    return static_file(path, root='css')
+
 @get('/css/<filename:re:.*>')
 def sever_static(filename):
     return static_file(filename, root='css')
