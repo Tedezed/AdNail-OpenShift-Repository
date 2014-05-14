@@ -4,7 +4,7 @@ def AdNailResultado(appid,numpag,entrada):
 	from BrainSlug import *
 	try:
 		dicebay = busqueda(appid,numpag,entrada)
-	except KeyError:
+	except:
 		dicebay = ''
 	dicma = BrainSlugMA(numpag,entrada)
 	dicta = BrainSlugTA(numpag,entrada)
