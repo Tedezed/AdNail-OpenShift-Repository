@@ -78,8 +78,9 @@ if os.environ.has_key('OPENSHIFT_REPO_DIR'):
     ON_OPENSHIFT = True
 
 if ON_OPENSHIFT:
-    TEMPLATE_PATH.append(os.path.join(os.environ['OPENSHIFT_HOMEDIR'],
-        'runtime/repo/wsgi/views/'))
+    TEMPLATE_PATH.append(os.path.join(os.environ['OPENSHIFT_HOMEDIR'],'runtime/repo/wsgi/views/'))
+    TEMPLATE_PATH.append(os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi/views/'))
+
     application=default_app()
 else:
     print "AdNail - Interfaces disponibles: "
