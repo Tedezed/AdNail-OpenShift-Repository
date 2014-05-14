@@ -10,7 +10,6 @@ setup(name='YourAppName',
         'bottle',
         'requests',
         'json',
-	'urllib2',
-	'commands'
+	'urllib2'
         ],
      )
