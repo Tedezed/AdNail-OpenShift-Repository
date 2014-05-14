@@ -5,7 +5,6 @@ setup(name='YourAppName',
       description='OpenShift App',
       author='Your Name',
       author_email='example@example.com',
-      packages = find_packages(),
       url='http://www.python.org/sigs/distutils-sig/',
       install_requires=[
         'bottle',
