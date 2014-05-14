@@ -8,6 +8,10 @@ from ANResult import AdNailResultado
 
 appid = 'micasaa3b-ad29-4b11-ac66-115e152e910'
 
+@route('/static/:path#.+#', name='static')
+def static(path):
+    return static_file(path, root='static')
+
 @get('/css/<filename:re:.*>')
 def sever_static(filename):
     return static_file(filename, root='css')
@@ -79,7 +83,6 @@ if os.environ.has_key('OPENSHIFT_REPO_DIR'):
 
 if ON_OPENSHIFT:
     TEMPLATE_PATH.append(os.path.join(os.environ['OPENSHIFT_HOMEDIR'],'runtime/repo/wsgi/views/'))
-    TEMPLATE_PATH.append(os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi/views/'))
 
     application=default_app()
 else:
