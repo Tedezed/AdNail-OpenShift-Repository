@@ -12,13 +12,9 @@ appid = 'micasaa3b-ad29-4b11-ac66-115e152e910'
 def static(path):
     return static_file(path, root='static')
 
-@route('/views/:path#.+#', name='views')
-def static(path):
-    return static_file(path, root='views')
-
 @route('/')
 def index():
-    return template('index.html')
+    return template('views/index.html')
 
 @get('/busqueda')
 def entrada():
