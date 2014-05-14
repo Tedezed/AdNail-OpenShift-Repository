@@ -14,7 +14,7 @@ def static(path):
 
 @route('/')
 def index():
-    return template('static/views/index.html')
+    return template('/static/views/index.html')
 
 @get('/busqueda')
 def entrada():
