@@ -10,6 +10,5 @@ setup(name='Tedezed',
         'bottle',
         'requests',
         'json',
-        'urllib2'
         ],
      )
