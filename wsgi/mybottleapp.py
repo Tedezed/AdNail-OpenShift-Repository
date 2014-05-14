@@ -3,7 +3,8 @@
 
 import commands
 import os
-from bottle import get, post, route, request, run, template, static_file, response, TEMPLATE_PATH, default_app
+from os import path
+from bottle import *
 from ANResult import AdNailResultado
 
 appid = 'micasaa3b-ad29-4b11-ac66-115e152e910'
