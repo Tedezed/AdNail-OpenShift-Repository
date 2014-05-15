@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 def AdNailResultado(appid,numpag,entrada):
 	from bottle import template
 	from ebay import *

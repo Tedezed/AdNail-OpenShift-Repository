@@ -1,6 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 def BrainSlugMA(numpag,entrada):
-    #!/usr/bin/env python
-    # -*- coding: utf-8 -*-
     import urllib2
     import re
     from bottle import template, request, response
@@ -77,8 +77,6 @@ def BrainSlugMA(numpag,entrada):
     return dicma
 
 def BrainSlugTA(numpag,entrada):
-    #!/usr/bin/env python
-    # -*- coding: utf-8 -*-
     import urllib2
     import re
     from bottle import template, request, response
@@ -114,7 +112,7 @@ def BrainSlugTA(numpag,entrada):
         listmoneda_ta =  []
         listmetodo_ta = []
         for prodct in listahtml:
-            titulo = re.findall(';tipo=5"\ >[0-9A-Za-z .*]*', prodct)
+            titulo = re.findall(';tipo=5"\ >[0-9A-Za-zá-ź .*]*', prodct)
             if titulo:
                 titulo = titulo[0].replace(';tipo=5" >                                            ','')
                 titulo = titulo.decode("utf-8", "replace")

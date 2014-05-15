@@ -58,8 +58,11 @@ def resultado():
     entrada = ''
     numpag = 1
     response.set_cookie('busqueda', str(numpag))
-    return AdNailResultado(appid,numpag,entrada)
-
+    try:
+        return AdNailResultado(appid,numpag,entrada)
+    except:
+        return template('busqueda_error.html')
+        
 @route('/resultado+')
 def resultado():
     entrada = request.cookies.get('entrada', 'entrada')
