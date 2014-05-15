@@ -114,7 +114,7 @@ def BrainSlugTA(numpag,entrada):
         listmoneda_ta =  []
         listmetodo_ta = []
         for prodct in listahtml:
-            titulo = re.findall(';tipo=5"\ >[0-9A-Za-z .*&#;]*', prodct)
+            titulo = re.findall(';tipo=5"\ >[0-9A-Za-zá-ź .*&#;]*', prodct)
             if titulo:
                 titulo = titulo[0].replace(';tipo=5" >                                            ','')
                 titulo = titulo.decode("utf-8", "replace")
