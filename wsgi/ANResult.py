@@ -45,6 +45,6 @@ def AdNailResultado(appid,numpag,entrada):
 			llave += 1
 
 		return template('resultado.html',listtituloh=listtitulo,listlinkh=listlink,listprecioh=listprecio,
-			listphotoh=listphoto,listmonedah=listmoneda,listmetodoh=listmetodo)
+			listphotoh=listphoto,listmonedah=listmoneda,listmetodoh=listmetodo, numpagh=numpag)
 	else:
 		return template('busqueda_error.html',entradah=entrada)
