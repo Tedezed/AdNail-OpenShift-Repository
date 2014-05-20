@@ -69,7 +69,7 @@ def BrainSlugMA(numpag,entrada):
             photo = serverimg + cod1 + '/' + cod2 + '/' + ide + '_1.jpg'
             listphoto_ma.append(photo)
 
-            listmoneda_ma.append('E')
+            listmoneda_ma.append('EUR')
             listmetodo_ma.append('MilAnuncios')
 
     dicma = {'listtitulo_ma':listtitulo_ma,'listlink_ma':listlink_ma,'listprecio_ma':listprecio_ma,'listphoto_ma':listphoto_ma,'listmoneda_ma':listmoneda_ma,'listmetodo_ma':listmetodo_ma}
@@ -145,7 +145,7 @@ def BrainSlugTA(numpag,entrada):
                 photo = 'http://www.kerrdental.es/res/global/product_515_275_noPhoto.jpg'
             listphoto_ta.append(photo)
 
-            listmoneda_ta.append('E')
+            listmoneda_ta.append('EUR')
             listmetodo_ta.append('TusAnuncios')
 
     dicta = {'listtitulo_ta':listtitulo_ta,'listlink_ta':listlink_ta,'listprecio_ta':listprecio_ta,'listphoto_ta':listphoto_ta,'listmoneda_ta':listmoneda_ta,'listmetodo_ta':listmetodo_ta}
