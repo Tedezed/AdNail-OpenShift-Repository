@@ -20,12 +20,16 @@ def BrainSlugMA(numpag,entrada):
     html.close()
 
     error = re.findall('class="nohayanuncios"', htmlread)
-    if error:
+    error1 = re.findall('<div class=x7>', htmlread)
+    if error or error1 == []:
         return ''
     else:
         resulhtml = re.findall('<div\ class=x1>[\s\S\w\W]*', htmlread)
         listahtml = resulhtml[0].split("<div class=x10>")
-        del listahtml[30]
+        cont = 0
+        for i in listahtml:
+            cont += 1
+        del listahtml[cont-1]
 
         listtitulo_ma = []
         listprecio_ma = []
@@ -105,10 +109,10 @@ def BrainSlugTA(numpag,entrada):
         htmlread = htmlread[0].replace('\r','')
         htmlread = htmlread.replace('\n','')
         listahtml = htmlread.split('<div class="ad_textlink_search">')
-        try:
-            del listahtml[20]
-        except:
-            print 'listahtml 20 no eliminado'
+        cont = 0
+        for i in listahtml:
+            cont += 1
+        del listahtml[cont-1]
 
         listtitulo_ta = []
         listprecio_ta = []

@@ -18,6 +18,19 @@ def AdNailResultado(appid,numpag,entrada):
 		listphoto =  []
 		listmoneda = []
 		listmetodo = []
+
+		if not dicta == '':
+			cont_ta = 0
+			for i in dicta['listtitulo_ta']:
+				cont_ta += 1
+			cont_ta = cont_ta -1
+
+		if not dicma == '':
+			cont_ma = 0
+			for i in dicma['listtitulo_ma']:
+				cont_ma += 1
+			cont_ma = cont_ma -1
+
 		llave = 0
 		while llave < 20:
 			if not dicebay == '':
@@ -28,7 +41,7 @@ def AdNailResultado(appid,numpag,entrada):
 				listmoneda.append(dicebay['listmoneda_ebay'][llave])
 				listmetodo.append(dicebay['listmetodo_ebay'][llave])
 
-			if not dicma == '':
+			if not dicma == '' and llave < cont_ma:
 				listtitulo.append(dicma['listtitulo_ma'][llave])
 				listlink.append(dicma['listlink_ma'][llave])
 				listprecio.append(dicma['listprecio_ma'][llave])
@@ -36,7 +49,7 @@ def AdNailResultado(appid,numpag,entrada):
 				listmoneda.append(dicma['listmoneda_ma'][llave])
 				listmetodo.append(dicma['listmetodo_ma'][llave])
 
-			if not dicta == '':
+			if not dicta == '' and llave < cont_ta:
 				listtitulo.append(dicta['listtitulo_ta'][llave])
 				listlink.append(dicta['listlink_ta'][llave])
 				listprecio.append(dicta['listprecio_ta'][llave])
