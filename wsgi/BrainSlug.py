@@ -96,14 +96,19 @@ def BrainSlugTA(numpag,entrada):
     html.close()
 
     error = re.findall('<div id="EmptyContent">', htmlread)
-    if error:
+    error1 = re.findall('<div class="grid_product "', htmlread)
+    if error or error1 == []:
+        print 'Error en TA'
         return ''
     else:
         htmlread = re.findall('<div class="grid_product "[\s\S\w\W]*',htmlread)
         htmlread = htmlread[0].replace('\r','')
         htmlread = htmlread.replace('\n','')
         listahtml = htmlread.split('<div class="ad_textlink_search">')
-        del listahtml[20]
+        try:
+            del listahtml[20]
+        except:
+            print 'listahtml 20 no eliminado'
 
         listtitulo_ta = []
         listprecio_ta = []

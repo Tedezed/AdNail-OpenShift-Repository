@@ -58,10 +58,7 @@ def resultado():
     entrada = ''
     numpag = 1
     response.set_cookie('busqueda', str(numpag))
-    try:
-        return AdNailResultado(appid,numpag,entrada)
-    except:
-        return template('busqueda_error.html')
+    return AdNailResultado(appid,numpag,entrada)
         
 @route('/resultado+')
 def resultado():
@@ -70,10 +67,7 @@ def resultado():
     if numpag < 35:
         numpag = numpag + 1
     response.set_cookie('busqueda', str(numpag))
-    try:
-        return AdNailResultado(appid,numpag,entrada)
-    except:
-        return template('busqueda_error.html')
+    return AdNailResultado(appid,numpag,entrada)
 
 @route('/resultado-')
 def resultado():
@@ -83,10 +77,7 @@ def resultado():
         numpag = numpag - 1
     response.set_cookie('busqueda', str(numpag))
 
-    try:
-        return AdNailResultado(appid,numpag,entrada)
-    except:
-        return template('busqueda_error.html')
+    return AdNailResultado(appid,numpag,entrada)
 
 if ON_OPENSHIFT:
     TEMPLATE_PATH.append(os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi/views/'))
