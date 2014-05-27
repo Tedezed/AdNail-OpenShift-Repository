@@ -31,9 +31,15 @@ def AdNailResultado(appid,numpag,entrada):
 				cont_ma += 1
 			cont_ma = cont_ma -1
 
+		if not dicebay == '':
+			cont_ebay = 0
+			for i in dicebay['listtitulo_ebay']:
+				cont_ebay += 1
+			cont_ebay = cont_ebay
+
 		llave = 0
-		while llave < 20:
-			if not dicebay == '':
+		while llave < 19:
+			if not dicebay == '' and llave < cont_ebay:
 				listtitulo.append(dicebay['listtitulo_ebay'][llave])
 				listlink.append(dicebay['listlink_ebay'][llave])
 				listprecio.append(dicebay['listprecio_ebay'][llave])
