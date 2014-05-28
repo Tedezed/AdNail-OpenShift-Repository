@@ -61,6 +61,7 @@ def BrainSlugMA(numpag,entrada):
             if link:
                 link = link[0].replace('"','')
                 link = link.replace('<div class=x7><a href=','')
+                link = link.replace(' target=_blank','')
             else:
                 link = 'N/A'
             listlink_ma.append('http://www.milanuncios.com' + link)
