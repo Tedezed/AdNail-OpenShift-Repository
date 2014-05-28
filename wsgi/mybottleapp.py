@@ -7,7 +7,7 @@ from os import path
 from bottle import *
 from ANResult import *
 
-appid = 'micasaa3b-ad29-4b11-ac66-115e152e910'
+appid = 'Key Ebay'
 
 ON_OPENSHIFT = False
 if os.environ.has_key('OPENSHIFT_REPO_DIR'):
